@@ -1,27 +1,131 @@
-#container {
-  text-align: center;
+/* General Styles */
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+
+/* Header Fix */
+ion-toolbar {
+  --background: #fde2e4;
+  --color: #333;
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-#container p {
+.profile-name {
   font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+  font-weight: bold;
 }
 
-#container a {
-  text-decoration: none;
+ion-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Diagnose Button Fix */
+.diagnose-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.diagnose-button {
+  background: linear-gradient(45deg, #ff80ab, #ff4081);
+  color: white;
+  font-size: 18px;
+  width: 90%;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.diagnose-button ion-icon {
+  font-size: 20px;
+}
+
+/* Carousel Section */
+.carousel {
+  padding: 10px;
+}
+
+ion-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+ion-card {
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+ion-card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+ion-card-content {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Previous Scans Section Fix */
+.previous-scans {
+  padding: 20px;
+}
+
+.previous-scans h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.scan-cards {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.scan-cards ion-card {
+  min-width: 160px;
+  flex-shrink: 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background: #f8f9fa;
+}
+
+/* Footer Fix */
+.footer-toolbar {
+  --background: #fde2e4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.footer-toolbar ion-button {
+  font-size: 24px;
+  color: #555;
+}
+
+.footer-toolbar ion-fab-button {
+  --background: #ff4081;
+  --color: white;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }

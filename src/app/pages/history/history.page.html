@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="search-container">
+    <ion-searchbar placeholder="Search..."></ion-searchbar>
+    <ion-button fill="outline" class="filter-button">
+      <ion-icon name="filter-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="history-list">
+    <ion-card *ngFor="let record of historyRecords">
+      <div class="card-content">
+        <img [src]="record.image" alt="Diagnosis Image" />
+        <div class="details">
+          <h3 class="diagnosis-name">{{ record.name }}</h3>
+          <p><strong>Date:</strong> {{ record.date }}</p>
+          <p><strong>Accuracy Percentage:</strong> {{ record.accuracy }}%</p>
+          <p><strong>Status:</strong> {{ record.status }}</p>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

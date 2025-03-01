@@ -1,20 +1,83 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
-      Blank
+      <img src="assets/profile.png" class="profile-pic" alt="Baby Profile">
+      <span class="profile-name">Naif</span>
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="notifications-outline" class="icon"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="diagnose-container">
+    <ion-button expand="full" class="diagnose-button">
+      <ion-icon name="scan-circle-outline"></ion-icon>
+      Diagnose Baby Skin
+    </ion-button>
+  </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="carousel">
+    <ion-card>
+      <img src="assets/article1.webp" alt="Understanding Common Baby Rashes" />
+      <ion-card-header>
+        <ion-card-title>Understanding Common Baby Rashes</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Learn about different types of rashes and how to manage them.</p>
+        <ion-button fill="clear">LEARN MORE</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="previous-scans">
+    <h2>Previous skin scans</h2>
+    <div class="scan-cards">
+      <ion-card>
+        <img src="assets/eczema.webp" alt="Mild Eczema" />
+        <ion-card-header>
+          <ion-card-title>Mild Eczema</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Date:</strong> January 15, 2025</p>
+          <p><strong>Accuracy Percentage:</strong> 85% Confidence</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <img src="assets/diaper-rash.jpg" alt="Diaper Rash" />
+        <ion-card-header>
+          <ion-card-title>Diaper Rash</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Date:</strong> January 10, 2025</p>
+          <p><strong>Accuracy Percentage:</strong> 90% Confidence</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="center">
+      <ion-fab-button>
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/history">
+        <ion-icon name="time-outline"></ion-icon>  <!-- History Icon -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
