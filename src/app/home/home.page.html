@@ -1,19 +1,31 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="custom-header">
+
+    <!-- Left: Menu Button -->
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button class="header-icon"></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      <img src="assets/profile.png" class="profile-pic" alt="Baby Profile">
-      <span class="profile-name">Naif</span>
-    </ion-title>
+
+   
+    <!-- Right: Notification Icon -->
     <ion-buttons slot="end">
-      <ion-icon name="notifications-outline" class="icon"></ion-icon>
+      <ion-icon name="notifications-outline" class="header-icon" routerLink="/notification" ></ion-icon>
     </ion-buttons>
+
   </ion-toolbar>
+
+   <!-- Center: Profile Picture -->
+   <div class="header-profile">
+    <img src="assets/profile.png" class="profile-pic" alt="Profile">
+    <span class="profile-name">Naif</span>
+  </div>
+
 </ion-header>
 
-<ion-content>
+
+
+<ion-content id="main-content">
+  <!-- Diagnose Button -->
   <div class="diagnose-container">
     <ion-button expand="full" class="diagnose-button">
       <ion-icon name="scan-circle-outline"></ion-icon>
@@ -21,63 +33,70 @@
     </ion-button>
   </div>
 
+  <!-- Article Cards (Horizontal Scroll) -->
   <div class="carousel">
-    <ion-card>
-      <img src="assets/article1.webp" alt="Understanding Common Baby Rashes" />
-      <ion-card-header>
-        <ion-card-title>Understanding Common Baby Rashes</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Learn about different types of rashes and how to manage them.</p>
-        <ion-button fill="clear">LEARN MORE</ion-button>
-      </ion-card-content>
+    <ion-card *ngFor="let article of articles" class="article-card">
+      <img [src]="article.image" [alt]="article.title" />
+      <div class="overlay">
+       <ion-card-title>{{ article.title }}</ion-card-title>
+        <p>{{ article.description }}</p>
+        <ion-button fill="clear"  routerLink="/articles">LEARN MORE</ion-button>
+      </div>
     </ion-card>
   </div>
 
-  <div class="previous-scans">
-    <h2>Previous skin scans</h2>
+  <!-- Previous Skin Scans (Grid Layout) -->
+  <div>
+    <h2 class="scan-title">Previous skin scans</h2>
     <div class="scan-cards">
-      <ion-card>
-        <img src="assets/eczema.webp" alt="Mild Eczema" />
-        <ion-card-header>
-          <ion-card-title>Mild Eczema</ion-card-title>
-        </ion-card-header>
+      <ion-card class="scan-cards ion-card" *ngFor="let scan of previousScans">
+        <img [src]="scan.image" [alt]="scan.name" />
         <ion-card-content>
-          <p><strong>Date:</strong> January 15, 2025</p>
-          <p><strong>Accuracy Percentage:</strong> 85% Confidence</p>
-        </ion-card-content>
-      </ion-card>
-
-      <ion-card>
-        <img src="assets/diaper-rash.jpg" alt="Diaper Rash" />
-        <ion-card-header>
-          <ion-card-title>Diaper Rash</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p><strong>Date:</strong> January 10, 2025</p>
-          <p><strong>Accuracy Percentage:</strong> 90% Confidence</p>
+          <ion-card-title class="content-title">{{ scan.name }}</ion-card-title>
+          <p class="card-info"><strong>Date:</strong> {{ scan.date }}</p><br>
+          <p class="card-info"><strong>Accuracy Percentage:</strong> {{ scan.accuracy }}% Confidence</p>
+          <ion-icon name="open-outline"></ion-icon>
         </ion-card-content>
       </ion-card>
     </div>
   </div>
+ <!-- Floating Camera Button -->
+ <ion-fab vertical="bottom" horizontal="center" slot="fixed" [ngClass]="{ 'fab-active': isFabOpen }">
+  <ion-fab-button (click)="toggleFab()">
+    <ion-icon [name]="isFabOpen ? 'close' : 'camera'"></ion-icon>
+  </ion-fab-button>
+
+  <ion-fab-list side="top">
+    <ion-fab-button (click)="takePhoto(); closeFab()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+    
+    <ion-fab-button (click)="uploadPhoto(); closeFab()">
+      <ion-icon name="image"></ion-icon>
+    </ion-fab-button>
+   
+  </ion-fab-list>
+</ion-fab>
 </ion-content>
 
+
+
+<!-- Footer Navigation Bar -->
 <ion-footer>
-  <ion-toolbar class="footer-toolbar">
+  <ion-toolbar class="footer-container">
     <ion-buttons slot="start">
       <ion-button routerLink="/home">
-        <ion-icon name="home-outline"></ion-icon>
+        <ion-icon class="footer-btn" name="home-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="center">
-      <ion-fab-button>
-        <ion-icon name="camera"></ion-icon>
-      </ion-fab-button>
-    </ion-buttons>
+
     <ion-buttons slot="end">
-      <ion-button routerLink="/history">
-        <ion-icon name="time-outline"></ion-icon>  <!-- History Icon -->
+      <ion-button routerLink="/profile">
+        <ion-icon class="footer-btn" name="person-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>
+
+
+

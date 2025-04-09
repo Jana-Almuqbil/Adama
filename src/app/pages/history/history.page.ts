@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-history',
@@ -7,6 +10,25 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class HistoryPage {
+
+  aiFilter = false;
+  doctorFilter = false;
+  
+  isFilterOpen = false; // Ensure this exists
+
+  openFilterModal() {
+    this.isFilterOpen = true;
+  }
+
+  closeFilterModal() {
+    this.isFilterOpen = false;
+  }
+  constructor(private navCtrl: NavController) {}
+
+  // Function to navigate back
+  goBack() {
+    this.navCtrl.back();
+  }
 
   historyRecords = [
     {

@@ -1,35 +1,65 @@
-/* General Styles */
+/* ======= Custom Header Styling ======= */
 
-
-/* Header Fix */
-ion-toolbar {
-  --background: #fde2e4;
-  --color: #333;
+.custom-header {
+  --background: #FAE3D9; /* Light pink */
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  height: 120px; /* Increase height to fit rounded bottom */
+  padding: 15px;
+  position:fixed;
+  border-bottom-left-radius: 30px; /* Rounded bottom */
+  border-bottom-right-radius: 30px; /* Rounded bottom */
+ 
 }
 
+
+/* ======= Profile Picture Centering ======= */
+.header-profile {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, 30%); /* Fine-tuned for better placement */
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+  z-index: 100;; /* Ensure it's above other elements */
+
+}
+
+/* Profile Picture */
 .profile-pic {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  margin-right: 10px;
+  border: 3px solid #61C0BF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Name Below Profile Picture */
 .profile-name {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
+  color: #00796b;
+  margin-top: 5px;
 }
 
-ion-title {
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  font-weight: bold;
+/* ======= Header Icons (Menu & Notification) ======= */
+.header-icon {
+  font-size: 30px;
+  color: #000;
 }
 
-/* Diagnose Button Fix */
+/* ======= Fix Menu Button Visibility ======= */
+ion-menu-button {
+  z-index: 10;
+}
+
+
+/*--------------------------------------*/
+
+/* Diagnose Button */
 .diagnose-container {
   display: flex;
   justify-content: center;
@@ -37,95 +67,172 @@ ion-title {
 }
 
 .diagnose-button {
-  background: linear-gradient(45deg, #ff80ab, #ff4081);
-  color: white;
+  --background: linear-gradient(180deg, #0F5252, #61C0BF) !important;
+  --color: white;
   font-size: 18px;
   width: 90%;
-  border-radius: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
+  height: 70px;
+  border-radius: 20px !important;
+  overflow: hidden;  display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
 }
 
-.diagnose-button ion-icon {
-  font-size: 20px;
-}
 
-/* Carousel Section */
+
+/* Article Cards - Horizontal Scroll */
 .carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px; /* Add spacing between cards */
   padding: 10px;
+  scroll-behavior: smooth;
 }
 
-ion-card img {
+.article-card {
+  min-width: 90%; /* Reduce width to allow spacing */
+  border-radius: 20px;
+  position: relative;
+  overflow:hidden;
+ 
+}
+
+
+.article-card img {
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 10px;
 }
 
-ion-card {
-  background: #ffffff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px; /* Adjust padding */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
-ion-card-title {
-  font-size: 16px;
+.overlay ion-card-title {
+  margin-top: 10px; /* Push title down */
+}
+
+
+.scan-title {
   font-weight: bold;
-  color: #333;
+  color: rgb(12, 87, 67);
+  padding: 3px;
+  text-align: left;
+  padding-left: 10px;
 }
 
-ion-card-content {
-  font-size: 14px;
-  color: #555;
-}
-
-/* Previous Scans Section Fix */
-.previous-scans {
-  padding: 20px;
-}
-
-.previous-scans h2 {
-  font-size: 20px;
-  font-weight: bold;
-  color: #333;
+.content-title  {
+  font-weight:200;
+  color: rgb(96, 182, 159);
+  }
+  
+.card-info{
+  color: rgb(0, 0, 0);
 }
 
 .scan-cards {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
+  justify-content:center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px;
+  overflow-y:hidden;
+  padding: 3px;
+}
+.scan-cards img {
+  border-radius: 20px;
 }
 
 .scan-cards ion-card {
-  min-width: 160px;
-  flex-shrink: 0;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: #f8f9fa;
-}
-
-/* Footer Fix */
-.footer-toolbar {
-  --background: #fde2e4;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 350px;
+  width:190px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px;
+  
+}
+  
+  /* ============================
+     Floating Camera Button  
+     ============================ */
+
+    ion-fab {
+      bottom: 20px !important;
+    }
+
+     ion-fab-button {
+      
+      transition: background-color 0.3s ease-in-out !important;
+      --background: #61C0BF;
+      --color: white;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    }
+  
+    ion-fab-button:active,
+    ion-fab-button:focus{
+  --background: #61C0BF !important; /* Keep it same on click */
 }
 
-.footer-toolbar ion-button {
-  font-size: 24px;
-  color: #555;
-}
-
-.footer-toolbar ion-fab-button {
-  --background: #ff4081;
+ion-fab-list ion-fab-button {
+  --background: #FFB6B9 !important;
   --color: white;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 80px !important;  /* Increased button size */
+  height: 80px !important;
+  border-radius: 50%;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Increase the size of icons inside FAB list buttons */
+ion-fab-list ion-fab-button ion-icon {
+  font-size: 30px !important; /* Increase icon size */
+  --ionicon-stroke-width: 40px; /* Make it thicker */
+}
+
+
+  /* ==========================
+   Floating Navigation Bar  
+   ========================== */
+
+   .footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --background: #FFB6B9; /* Footer background color */
+    width: 90%;
+    height: 80px; /* Adjusted height */
+    border-radius: 50px;
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 35px;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+  }
+
+/* Footer Buttons (Home & Profile) */
+.footer-btn {
+  background: transparent;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+ion-content {
+  --padding-top: 120px; /* Adjust this based on header height */
+
+  --padding-bottom: 60px; /* Adjust this value to make space for the footer */
 }
